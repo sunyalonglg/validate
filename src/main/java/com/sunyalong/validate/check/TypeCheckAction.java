@@ -13,6 +13,7 @@ import java.lang.reflect.Field;
  *
  * @author sunyalong
  * @version 1.0, 2018-11-29 15:42:06
+ * @email sun1920185681@163.com
  */
 public class TypeCheckAction implements CheckAction{
 

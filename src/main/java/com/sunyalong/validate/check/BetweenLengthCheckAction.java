@@ -8,10 +8,11 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 
 /**
- *  区间判断实现
+ *  区间判断检查方法实现
  *
  * @author sunyalong
  * @version 1.0, 2018-11-29 15:42:06
+ * @email sun1920185681@163.com
  */
 public class BetweenLengthCheckAction implements CheckAction{
 

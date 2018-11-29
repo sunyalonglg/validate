@@ -8,10 +8,11 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 
 /**
- *  长度查动作实现
+ *  长度检查动作实现
  *
  * @author sunyalong
  * @version 1.0, 2018-11-29 15:42:06
+ * @email sun1920185681@163.com
  */
 public class LengthCheckAction implements CheckAction{
 
