@@ -7,15 +7,9 @@
 使用git下载本工程, 用IDEA打开, 点击右边的maven, 跳过测试, 打包完成后就已经在maven本地仓库了.
 
 # validate 与Spring 框架集成
+打开需要集成的工程, 在pom文件添加当前打包的这个工程的maven依赖。
 
-1. 将以下配置拷贝到目标工程
-    <dependency>
-        <groupId>com.sunyalong</groupId>
-        <artifactId>validate</artifactId>
-        <version>1.0</version>
-    </dependency>
-
-2. validate 该框架内置一个拦截器, 直接在应用程序中配置这个拦截器就可以实现,具体参考以下代码
+validate 该框架内置一个拦截器, 直接在应用程序中配置这个拦截器就可以实现,具体参考以下代码
 
     @Component
     public class InterceptorConfig implements WebMvcConfigurer {
@@ -32,6 +26,7 @@
     
 2. 当前端使用application/json 的请求方式提交的时候校验框架不会起任何作用, 因为如果读取了参数流就会销毁, 到接口的后也是拿不到任何数据的, 如遇到此         类问题 需要在接口的第一行,使用手动验证的方式进行实现具体参考 TestValidate 类中的方法. 
 
+3. 如果需要对本框架继续添加更多的注解也是可以的， 具体查看VlidateUtils 类进行添加。
 
 
 
