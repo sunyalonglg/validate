@@ -1,10 +1,21 @@
 # validate web应用参数校验框架
-该框架主要实现的功能有, http 请求的参数自动校验, 现目前需要在每个接口的开始前调用
-VlidateUtils.toValidate方法进行手动人工校验, 后期会集成在SpringBoot中, 于Spring框架进行无缝对接, 目前框架使用方法参考 TestValidate类于User,可以了解其中的原理, 如有任何不太了解的可与本人邮箱联系. 
+   该框架主要实现的功能有, HTTP 请求的参数自动校验参数, 已经与Spring框架进行了无缝对接, 只需要配置一个拦截器就可以使用. 
+框架还提供了手动验证方法, 使用方法参考 TestValidate类于User,即可轻松掌握, validate是一个轻量级的框架,减少了分装, 但又不缺乏其强大的功能, 实现原理也比较简单感兴趣的童鞋, 可以进行研究探讨. 可以了解其中的原理, 如有任何不太了解的可与本人邮箱联系. 
 
-# validate 验证框架与Spring 框架集成
+# validate 安装与打包
 
-validate 该框架内置一个拦截器, 直接在应用程序中配置这个拦截器就可以实现, 验证功能.
+使用git下载本工程, 用IDEA打开, 点击右边的maven, 跳过测试, 打包完成后就已经在maven本地仓库了.
+
+# validate 与Spring 框架集成
+
+1. 将以下配置拷贝到目标工程
+    <dependency>
+        <groupId>com.sunyalong</groupId>
+        <artifactId>validate</artifactId>
+        <version>1.0</version>
+    </dependency>
+
+2. validate 该框架内置一个拦截器, 直接在应用程序中配置这个拦截器就可以实现,具体参考以下代码
 
     @Component
     public class InterceptorConfig implements WebMvcConfigurer {
@@ -16,9 +27,10 @@ validate 该框架内置一个拦截器, 直接在应用程序中配置这个拦
 
 # 注意事项
 
-1. 如果需要修改返回的数据结构可修改 ValidateCheckInterceptor 拦截器的下面这行代码将result修改即可.
-    responseError(httpServletRequest,httpServletResponse,JSON.toJSONString(result));
-2. 当前端使用application/json 的请求方式提交表单的时候校验框架不会起任何作用, 应为如果读取了参数流就会销毁, 到接口的时候也是拿不到任何数据的, 如遇到此    类问题 需要在接口的第一行使用手动验证的方式进行实现具体参考 TestValidate 类中的方法. 
+1. 如果需要修改返回的数据结构可修改 ValidateCheckInterceptor 拦截器的               responseError(httpServletRequest,httpServletResponse,JSON.toJSONString(result));
+    行这行代码
+    
+2. 当前端使用application/json 的请求方式提交的时候校验框架不会起任何作用, 因为如果读取了参数流就会销毁, 到接口的后也是拿不到任何数据的, 如遇到此         类问题 需要在接口的第一行,使用手动验证的方式进行实现具体参考 TestValidate 类中的方法. 
 
 
 
