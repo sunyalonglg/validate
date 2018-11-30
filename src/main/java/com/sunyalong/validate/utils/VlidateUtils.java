@@ -36,12 +36,17 @@ public class VlidateUtils {
      * @return 返回验证结果.
      */
     public static ValidateResult toValidate(Object obj) throws IllegalAccessException {
-        // 获得所有属性
-        Field[] fields = obj.getClass().getDeclaredFields();
         // 设置返回结果
         ValidateResult result = new ValidateResult();
         result.setCode(200);
         result.setMsg("当前类没有打注解");
+        if (obj == null) {
+            return result;
+        }
+
+        // 获得所有属性
+        Field[] fields = obj.getClass().getDeclaredFields();
+
 
         // 遍历注解顺序
         for (Class annotationClass : annotationsSort) {
