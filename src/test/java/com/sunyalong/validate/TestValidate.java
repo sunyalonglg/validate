@@ -1,5 +1,6 @@
 package com.sunyalong.validate;
 
+import com.sunyalong.validate.annotations.Check;
 import com.sunyalong.validate.utils.VlidateUtils;
 
 public class TestValidate {
@@ -9,6 +10,10 @@ public class TestValidate {
         VlidateUtils.ValidateResult validateResult = VlidateUtils.toValidate(user);
 
         System.out.println(validateResult.getCode()+"------------"+validateResult.getMsg());
+
+    }
+
+    public void ddd(@Check() String sss){
 
     }
 }
